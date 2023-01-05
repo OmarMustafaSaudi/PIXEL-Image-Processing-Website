@@ -1,0 +1,878 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Chivo Mono', monospace;
+}
+
+body {
+    background-image: linear-gradient(to right top, #051937, #171228, #190a1a, #12040d, #000000);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* menu */
+.menu {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    border-radius: 50px;
+    transition: 0.5s ease-in-out all;
+    z-index: 9999999999999999999999999999999999;
+}
+
+.menu ul {
+    transition: 0.5s ease-in-out height;
+}
+
+.menu ul.inactive {
+    height: 0;
+    overflow: hidden;
+}
+
+.menu ul li {
+    list-style: none;
+}
+
+.menu .menu-icon {
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 10px 0;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: ease-in-out 0.5s all;
+}
+
+.menu i {
+    font-size: 22px;
+    color: rgba(0, 0, 0, 0.4);
+    transition: ease-in-out 0.5s all;
+}
+
+.menu .menu-icon:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.menu .menu-icon:hover i {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+
+/* main container */
+.container {
+    padding: 2% 5%;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 10px 7%;
+    border-radius: 50px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(225, 225, 225, 0.2);
+    border-left: 1px solid rgba(225, 225, 225, 0.2);
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+}
+
+.container svg {
+    width: 200px;
+}
+
+.container svg polygon,
+.container svg path {
+    fill: #fff;
+    transition: 0.5s ease-in-out;
+}
+
+.container svg polygon:hover {
+    fill: #190a1a;
+    cursor: pointer;
+}
+
+
+.container .logo-container svg {
+    width: 340px;
+}
+
+.container .description {
+    width: 65%;
+    margin-left: 20px;
+}
+
+.container .description svg {
+    width: 150px;
+    margin-top: 20px;
+}
+
+.container .description .site-description {
+    color: #fff;
+    margin: 20px 10px;
+    font-family: 'Chivo Mono', monospace;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.container .description .site-description .btns {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.container .description .site-description button {
+    padding: 10px;
+    background: none;
+    color: rgba(255, 255, 255, 0.9);
+    outline: none;
+    margin: 10px;
+    cursor: pointer;
+    font-family: 'Chivo Mono', monospace;
+    font-size: 18px;
+    border: 1px solid rgba(225, 225, 225, 0.2);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s ease-in-out all;
+}
+
+.btns button span {
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background: rgba(255, 255, 255, 0.1);
+    top: 0;
+    left: 0;
+    transition: ease-in-out all 0.5s;
+}
+
+
+.btns button:hover span {
+    width: 100%;
+}
+
+/* image container */
+.image-container {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(225, 225, 225, 0.2);
+    border-left: 1px solid rgba(225, 225, 225, 0.2);
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+    min-width: 700px;
+    min-height: 350px;
+    z-index: 100001;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    gap: 40px;
+    overflow: hidden;
+    display: none;
+}
+
+.image-container.active {
+    display: flex;
+}
+
+.cancel {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    height: 45px;
+    transition: ease-in-out 0.5s all;
+}
+
+.cancel:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.cancel:hover .cancel-btn {
+    top: 2px;
+}
+
+.cancel-btn {
+    position: absolute;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 18px;
+    cursor: pointer;
+    transition: ease-in-out all 0.5s;
+    top: -100px;
+}
+
+.cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.image-container .wrapper {
+    position: relative;
+    min-height: 400px;
+    min-width: 300px;
+    border-radius: 20px;
+    background: rgba(225, 225, 225, 0.2);
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+}
+
+.image-container .wrapper.active {
+    border: none;
+}
+
+.wrapper .image {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper .image img {
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+.wrapper .image img.active {
+    display: block;
+}
+
+.wrapper .icon {
+    font-size: 100px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.wrapper .text {
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: 'Chivo Mono', monospace;
+}
+
+.wrapper #cancel-img-01-btn,
+.wrapper #cancel-img-02-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    display: none;
+    transition: 0.5s ease-in-out;
+}
+
+.wrapper.active:hover #cancel-img-01-btn,
+.wrapper.active:hover #cancel-img-02-btn {
+    display: block;
+    z-index: 100;
+    color: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.wrapper.active #cancel-img-01-btn:hover,
+.wrapper.active #cancel-img-02-btn:hover {
+    color: rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.wrapper .file-name {
+    position: absolute;
+    display: none;
+    bottom: -50px;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    padding: 8px 0px;
+    background: rgba(255, 255, 255, 0.4);
+    transition: ease-in-out 0.5s;
+    font-family: 'Chivo Mono', monospace;
+
+}
+
+.wrapper .file-name {
+    display: block;
+}
+
+.wrapper.active:hover .file-name {
+    bottom: 0px;
+}
+
+.image-container #custom-img-01-btn,
+.image-container #custom-img-02-btn {
+    outline: none;
+    margin-top: 30px;
+    width: 100%;
+    height: 50px;
+    display: block;
+    border-radius: 25px;
+    border: none;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.1);
+    font-family: 'Chivo Mono', monospace;
+    transition: ease-in-out 0.5s all;
+}
+
+.image-container #custom-img-01-btn:hover,
+.image-container #custom-img-02-btn:hover {
+    color: rgba(0, 0, 0, 0.9);
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 10px;
+}
+
+.submit {
+    position: absolute;
+    bottom: -50%;
+    padding: 10px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    z-index: 1000000000;
+    transition: all ease-in-out 0.5s;
+}
+
+.submit.active {
+    bottom: 0;
+}
+
+.submit .submit-btn {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: ease-in-out 0.5s all;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit .submit-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* images editing container */
+.editing-container {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(225, 225, 225, 0.2);
+    border-left: 1px solid rgba(225, 225, 225, 0.2);
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+    min-width: 700px;
+    min-height: 350px;
+    z-index: 100001;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.editing-container.active {
+    display: flex;
+}
+
+.editing-container .img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 400px;
+    min-height: 500px;
+    padding: 10px 20px;
+    overflow: hidden;
+}
+
+
+.editing-container .img-container.imdg01 {
+    padding-left: 30px;
+    border-right: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.editing-container .img-container.imdg02 {
+    padding-right: 30px;
+}
+
+.img-container .img-01-edit,
+.img-container .img-02-edit,
+.img-container .img-03-edit,
+.img-container .img-04-edit {
+    position: relative;
+    background: rgba(255, 255, 255, 0.2);
+    width: 100%;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    overflow: hidden;
+}
+
+.img-container .image-setting {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+}
+
+.img-container .image-setting .settings {
+    display: flex;
+    border-radius: 10px;
+    z-index: 10000000000000000;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 5px;
+    transition: ease-in-out 0.5s height;
+    overflow: hidden;
+}
+
+.img-container .image-setting .settings.inactive {
+    height: 0;
+}
+
+.crop-cont li i.active {
+    background: rgba(255, 255, 255, 0.4);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+.zoom-cont,
+.rotate-cont,
+.crop-cont {
+    display: none;
+    justify-content: center;
+    position: absolute;
+    left: -100px;
+    top: 42px;
+    gap: 10px;
+}
+
+.crop-cont {
+    left: -150px;
+}
+
+.zoom-cont.active,
+.rotate-cont.active,
+.crop-cont.active {
+    display: flex;
+}
+
+.rotate-cont {
+    top: 90px;
+}
+
+.zoom-cont {
+    top: 140px;
+}
+
+
+.img-container .image-setting ul li {
+    list-style: none;
+}
+
+
+.img-container .image-setting i {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: ease-in-out all 0.5s;
+}
+
+.img-container .image-setting i:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.img-container .image-setting ul i {
+    margin-top: 10px;
+}
+
+.aspect {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-family: 'Chivo Mono', monospace;
+}
+
+.aspect li {
+    list-style: none;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 5px;
+    border-radius: 10px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out all;
+}
+
+.aspect i {
+    font-size: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: 0.5s ease-in-out all;
+}
+
+.aspect li:hover,
+.aspect i:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.aspect ul {
+    display: none;
+}
+
+.aspect ul.active {
+    display: block;
+}
+
+
+.preview-container {
+    border-top: 1px rgba(255, 255, 255, 0.2) solid;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.preview-cover {
+    overflow: hidden;
+}
+
+.i-container {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 150px);
+    top: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #000000;
+}
+
+.i-container .image-workspace {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.image-workspace img {
+    width: 10px;
+}
+
+/*  */
+.submit-regition {
+    position: absolute;
+    z-index: 10000000999;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    height: 300px;
+    align-items: center;
+    width: 100%;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    flex-direction: column;
+    bottom: 0;
+    bottom: -240px;
+    background: none;
+    transition: ease-in-out all 0.3s;
+}
+
+.submit-regition.active {
+    bottom: 0px;
+    background: rgba(22, 17, 39, 0.8);
+    backdrop-filter: blur(15px);
+}
+
+.submit-regition .up-down-btn {
+    position: absolute;
+    top: 8px;
+    padding: 10px;
+    font-size: 25px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: 0.5s ease-in-out all;
+}
+
+.submit-regition .up-down-btn:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+
+.submit-regition .submit-btn {
+    font-size: 90px;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+}
+
+.submit-regition .submit-btn:hover {
+    color: rgba(0, 255, 0, 0.4);
+    box-shadow: 1px 1px 28px 14px rgba(0, 255, 0, 0.2);
+    -webkit-box-shadow: 1px 1px 28px 14px rgba(0, 255, 0, 0.2);
+    -moz-box-shadow: 1px 1px 28px 14px rgba(0, 255, 0, 0.2);
+}
+
+.submit-regition p {
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+/* circular */
+.cropper-view-box.rounded,
+.cropper-face.rounded {
+    border-radius: 50%;
+}
+
+.cropper-view-box.rounded {
+    outline: 0;
+    box-shadow: 0 0 0 1px #39f;
+}
+
+
+/* results section */
+.results {
+    position: absolute;
+    background: rgba(5, 25, 55, 0.2);
+    background: linear-gradient(0deg, rgba(5, 25, 55, 0.1) 0%, rgba(25, 10, 26, 0.1) 100%);
+    border-radius: 50px;
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(225, 225, 225, 0.2);
+    border-left: 1px solid rgba(225, 225, 225, 0.2);
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+    min-width: 700px;
+    min-height: 350px;
+    z-index: 10000333;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    overflow: hidden;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.results.active {
+    display: flex;
+}
+
+.results .result-imgs-conatiner {
+    display: flex;
+    padding: 10px;
+    gap: 20px;
+}
+
+.results h1 {
+    color: #fff;
+    font-size: 40px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.results .result-imgs-conatiner .r-imgs {
+    position: relative;
+    height: 400px;
+    width: 300px;
+    border-radius: 20px;
+    background: rgba(225, 225, 225, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+}
+
+.result-imgs-conatiner .info,
+.result-imgs-conatiner .open-img,
+.result-imgs-conatiner .dwnld-img {
+    position: absolute;
+}
+
+.result-imgs-conatiner .info {
+    background: rgba(225, 225, 225, 0.2);
+    width: 100%;
+    padding: 10px;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all ease-in-out 0.5s;
+}
+
+.result-imgs-conatiner .open-img,
+.result-imgs-conatiner .dwnld-img {
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+}
+
+.result-imgs-conatiner .dwnld-img {
+    top: -40px;
+    right: 60px;
+}
+
+.result-imgs-conatiner .open-img {
+    top: 10px;
+    right: -40px;
+}
+
+.r-imgs:hover .dwnld-img {
+    top: 10px;
+}
+
+.r-imgs:hover .open-img {
+    right: 10px;
+}
+
+.result-imgs-conatiner .open-img:hover,
+.result-imgs-conatiner .dwnld-img:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.result-imgs-conatiner .r-imgs img {
+    height: 100%;
+    width: 100%;
+}
+
+.result-imgs-conatiner .r-imgs:hover .info {
+    bottom: 0;
+}
+
+.editing-container .cancel {
+    z-index: 10000000000000000000000000009;
+}
+
+.form-check {
+    position: absolute;
+    z-index: 500000000000000000000;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(25, 10, 26, 0.1);
+    font-size: 25px;
+    bottom: 10px;
+    gap: 10px;
+}
+
+.form-check input {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.form-check label {
+    transition: all ease-in-out 0.5s;
+    cursor: pointer;
+}
+
+.form-check label:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
